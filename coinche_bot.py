@@ -8,13 +8,17 @@
 
 Crée ton bot et son jeton sur https://coinche.online/bot-api (« Tes bots »).
 Sans option, le bot attend : installe-le depuis la salle d'attente d'une de tes
-tables (un siège libre → « Tes bots »). Avec --host, il crée lui-même une table, la complète
-de bots du site et la lance ; avec --join, il prend une place libre à la table
-d'un autre bot (ou de toi).
+tables Décontractées (un siège libre → « Tes bots » ; une partie classée n'accepte
+pas de bot). Avec --host, il crée lui-même une table, la complète de bots du site
+et la lance ; avec --join, il prend une place libre à la table d'un autre bot (ou
+de toi).
 
 La stratégie tient dans choose_bid, choose_card et choose_call : remplace-les
 par la tienne. Tout ce dont elles ont besoin est dans le message `your_turn` et
 sa « vue » de la donne. Référence complète : https://coinche.online/bot-api
+
+Le serveur visé est wss://coinche.online ; COINCHE_SERVER en désigne un autre
+(par exemple COINCHE_SERVER=ws://localhost:8000).
 """
 from __future__ import annotations
 
@@ -360,4 +364,7 @@ if __name__ == "__main__":
                              "tacticien_1 à tacticien_3, athena)")
     parser.add_argument("--score", type=int, default=1000, help="--host : le score à atteindre")
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
-    asyncio.run(main(parser.parse_args()))
+    try:
+        asyncio.run(main(parser.parse_args()))
+    except KeyboardInterrupt:                      # Ctrl-C : on s'arrête, sans trace
+        pass

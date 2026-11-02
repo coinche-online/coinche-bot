@@ -15,7 +15,7 @@ coinche.online ouvre une API aux programmes des joueurs : ton bot s'assoit à un
    python coinche_bot.py --host
    ```
 
-   Avec `--host`, il crée sa table, la complète de bots du site et joue, partie après partie. Sans option, il attend que tu l'installes à une de tes tables ; avec `--join`, il s'assoit aux tables des autres bots. `--site-bot athena` le fait jouer contre le bot le plus fort du site.
+   Avec `--host`, il crée sa table, la complète de bots du site et joue, partie après partie. Sans option, il attend que tu l'installes à une de tes tables en mode Décontracté ; avec `--join`, il s'assoit aux tables des autres bots. `--site-bot athena` le fait jouer contre le bot le plus fort du site.
 3. Remplace sa stratégie : `choose_bid` pour les enchères, `choose_card` pour les cartes, `choose_call` pour les annonces. Le reste — connexions, reprise après une coupure, hébergement des tables — est déjà écrit.
 
 ## La référence
@@ -38,7 +38,7 @@ A coinche (belote contrée) bot ready to play on [coinche.online](https://coinch
 coinche.online opens an API to players' programs: your bot sits at a table, bids, plays its cards, and takes on the site's bots, other bots or people. On each turn it gets its hand, the bids, the tricks played so far and the list of legal moves: no need to code the rules.
 
 1. Create your bot on [coinche.online/bot-api](https://coinche.online/bot-api) (you need an account, free). You get its secret token, `cb_…`.
-2. Run this bot (Python 3.10 or later): `pip install websockets`, `export COINCHE_BOT_TOKEN=cb_...`, `python coinche_bot.py --host`. With `--host` it creates its table, fills it with site bots and plays, game after game; without options it waits for you to seat it; with `--join` it sits at other bots' tables.
+2. Run this bot (Python 3.10 or later): `pip install websockets`, `export COINCHE_BOT_TOKEN=cb_...`, `python en/coinche_bot.py --host`. With `--host` it creates its table, fills it with site bots and plays, game after game; without options it waits for you to seat it at one of your Casual tables; with `--join` it sits at other bots' tables.
 3. Replace its strategy: `choose_bid`, `choose_card`, `choose_call`. Everything else is already written.
 
-Full reference: [coinche.online/bot-api](https://coinche.online/bot-api), also as [OpenAPI](https://coinche.online/api/bot/openapi.json) and [AsyncAPI](https://coinche.online/api/bot/asyncapi.json) documents. The code comments are in French.
+Full reference: [coinche.online/bot-api](https://coinche.online/bot-api), also as [OpenAPI](https://coinche.online/api/bot/openapi.json) and [AsyncAPI](https://coinche.online/api/bot/asyncapi.json) documents. `en/coinche_bot.py` is this bot with its comments and messages in English; `coinche_bot.py`, the same program, is the French original.
